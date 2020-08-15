@@ -1,50 +1,116 @@
 import React, { useState, useEffect } from 'react';
 import { random } from 'lodash';
-import './App.css';
-
-const text =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci repudiandae ut repellat ullam, facilis molestiae qui voluptatum minus ab debitis. Voluptatibus hic unde laudantium ea? Aspernatur quasi eos doloribus distinctio?';
+import './App.scss';
+import Button from './Button';
+import { FaFreeCodeCamp, FaGithub, FaTwitter } from 'react-icons/fa';
 
 const url =
   'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
 
-function App() {
+function BottomRow({ children }) {
+  return <div className="BottomRow">{children}</div>;
+}
+
+function NewQuoteButton({ onClick }) {
   return (
-    <div className="App">
-      <QuoteMachine />
+    <Button id="new-quote" onClick={onClick} className="NewQuoteButton">
+      New Quote
+    </Button>
+  );
+}
+
+function Link(props) {
+  return (
+    <a {...props} className="Link" target="_blank" rel="noopener noreferrer" />
+  );
+}
+
+function Links() {
+  return (
+    <div className="Links">
+      <Link href="https://github.com/sitek94" id="github">
+        <FaGithub className="icon"/>
+      </Link>
+      <Link
+        href="https://forum.freecodecamp.org/u/sitek94/summary"
+        id="free-code-camp"
+      >
+        <FaFreeCodeCamp className="icon"/>
+      </Link>
+      <Link href="twitter.com/intent/tweet" id="tweet-quote">
+        <FaTwitter className="icon"/>
+      </Link>
     </div>
   );
 }
 
-function QuoteMachine() {
-  const [text, setText] = useState('');
-  const [author, setAuthor] = useState('')
+function Text({ text }) {
+  return (
+    <p id="text" className="Text">
+      {text}
+    </p>
+  );
+}
+
+function Author({ name }) {
+  return (
+    <span id="authorName" className="Author">
+      &mdash; {name}
+    </span>
+  );
+}
+
+function QuoteBox({ children }) {
+  return (
+    <div id="quote-box" className="QuoteBox">
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  const [quotedText, setQuotedText] = useState('');
+  const [authorName, setAuthorName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchRandomQuote();
   }, []);
 
   const fetchRandomQuote = () => {
+    setIsLoading(true);
+
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         const quotes = data.quotes;
+        // Get random quote
         const randomNum = random(0, quotes.length);
         const randomQuote = quotes[randomNum];
 
-        setAuthor(randomQuote.author);
-        setText(randomQuote.quote);
+        setIsLoading(false);
+        setAuthorName(randomQuote.author);
+        setQuotedText(randomQuote.quote);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setError(true);
+        console.log(error);
+        // # TODO
       });
   };
-
   return (
-    <div id="quote-box">
-      <div id="text">{text}</div>
-      <div id="author">{author}</div>
-      <button id="new-quote" onClick={fetchRandomQuote}>New Quote</button>
-      <a href="twitter.com/intent/tweet" id="tweet-quote">
-        Tweet quote
-      </a>
+    <div className="App" style={{ "--primary-color": "blue" }}>
+      <QuoteBox>
+        <Text text={quotedText} />
+        <Author name={authorName} />
+
+        <BottomRow>
+          <Links />
+          <NewQuoteButton onClick={fetchRandomQuote} />
+        </BottomRow>
+      </QuoteBox>
     </div>
   );
 }
