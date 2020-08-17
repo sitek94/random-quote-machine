@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  FaFreeCodeCamp,
-  FaGithub,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaFreeCodeCamp, FaGithub, FaTwitter } from 'react-icons/fa';
 
 function Link({ children, ...props }) {
   return (
@@ -14,6 +10,10 @@ function Link({ children, ...props }) {
 }
 
 export default function Links({ text, author }) {
+  const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    `"${text}" - ${author}`
+  )}&hashtags=quotes`;
+
   return (
     <div className="Links">
       <Link href="https://github.com/sitek94" id="github">
@@ -25,12 +25,7 @@ export default function Links({ text, author }) {
       >
         <FaFreeCodeCamp className="icon" />
       </Link>
-      <Link
-        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          `"${text}" - ${author}`
-        )}&hashtags=quotes`}
-        id="tweet-quote"
-      >
+      <Link href={twitterLink} id="tweet-quote">
         <FaTwitter className="icon" />
       </Link>
     </div>

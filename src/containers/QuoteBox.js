@@ -32,7 +32,6 @@ export default function QuoteBox({ onNewQuoteClick }) {
         setQuotedText(randomQuote.quote);
       })
       .catch((error) => {
-        
         console.log(error);
         setAuthorName("Maciek");
         setQuotedText("Something went wrong and we couldn't load the quote, please try again :)");
@@ -40,6 +39,7 @@ export default function QuoteBox({ onNewQuoteClick }) {
   };
 
   const handleNewQuoteClick = () => {
+    // Change theme and fetch new quote
     onNewQuoteClick();
     fetchRandomQuote();
   }
