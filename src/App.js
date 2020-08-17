@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { random } from 'lodash';
 import './App.scss';
 import Button from './Button';
-import { FaFreeCodeCamp, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaFreeCodeCamp, FaGithub, FaTwitter, FaQuoteLeft } from 'react-icons/fa';
 
 const url =
   'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
@@ -19,26 +19,33 @@ function NewQuoteButton({ onClick }) {
   );
 }
 
-function Link(props) {
+function Link({ children, ...props }) {
   return (
-    <a {...props} className="Link" target="_blank" rel="noopener noreferrer" />
+    <a {...props} className="Link" target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
   );
 }
 
-function Links() {
+function Links({ text, author }) {
   return (
     <div className="Links">
       <Link href="https://github.com/sitek94" id="github">
-        <FaGithub className="icon"/>
+        <FaGithub className="icon" />
       </Link>
       <Link
         href="https://forum.freecodecamp.org/u/sitek94/summary"
         id="free-code-camp"
       >
-        <FaFreeCodeCamp className="icon"/>
+        <FaFreeCodeCamp className="icon" />
       </Link>
-      <Link href="twitter.com/intent/tweet" id="tweet-quote">
-        <FaTwitter className="icon"/>
+      <Link
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          `"${text}" - ${author}`
+        )}&hashtags=quotes`}
+        id="tweet-quote"
+      >
+        <FaTwitter className="icon" />
       </Link>
     </div>
   );
@@ -47,6 +54,7 @@ function Links() {
 function Text({ text }) {
   return (
     <p id="text" className="Text">
+      <FaQuoteLeft />{" "}
       {text}
     </p>
   );
@@ -54,7 +62,7 @@ function Text({ text }) {
 
 function Author({ name }) {
   return (
-    <span id="authorName" className="Author">
+    <span id="author" className="Author">
       &mdash; {name}
     </span>
   );
@@ -101,13 +109,13 @@ function App() {
       });
   };
   return (
-    <div className="App" style={{ "--primary-color": "blue" }}>
+    <div className="App" style={{ '--primary-color': 'blue' }}>
       <QuoteBox>
         <Text text={quotedText} />
         <Author name={authorName} />
 
         <BottomRow>
-          <Links />
+          <Links text={quotedText} author={authorName} />
           <NewQuoteButton onClick={fetchRandomQuote} />
         </BottomRow>
       </QuoteBox>
