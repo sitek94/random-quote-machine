@@ -3,12 +3,11 @@ import { random } from 'lodash';
 import './App.scss';
 import Button from './Button';
 import {
-  FaFreeCodeCamp,
-  FaGithub,
-  FaTwitter,
   FaQuoteLeft,
 } from 'react-icons/fa';
 import colors from './colors';
+
+import Links from './components/Links';
 
 const url =
   'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
@@ -22,38 +21,6 @@ function NewQuoteButton({ onClick }) {
     <Button id="new-quote" onClick={onClick} className="NewQuoteButton">
       New Quote
     </Button>
-  );
-}
-
-function Link({ children, ...props }) {
-  return (
-    <a {...props} className="Link" target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  );
-}
-
-function Links({ text, author }) {
-  return (
-    <div className="Links">
-      <Link href="https://github.com/sitek94" id="github">
-        <FaGithub className="icon" />
-      </Link>
-      <Link
-        href="https://forum.freecodecamp.org/u/sitek94/summary"
-        id="free-code-camp"
-      >
-        <FaFreeCodeCamp className="icon" />
-      </Link>
-      <Link
-        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          `"${text}" - ${author}`
-        )}&hashtags=quotes`}
-        id="tweet-quote"
-      >
-        <FaTwitter className="icon" />
-      </Link>
-    </div>
   );
 }
 
