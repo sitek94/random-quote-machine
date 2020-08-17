@@ -4,6 +4,8 @@ import './App.scss';
 
 import colors from './colors';
 
+import Author from './components/Author';
+import BottomRow from './components/BottomRow';
 import Links from './components/Links';
 import NewQuoteButton from './components/NewQuoteButton';
 import Text from './components/Text';
@@ -11,19 +13,6 @@ import Text from './components/Text';
 const url =
   'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
 
-function BottomRow({ children }) {
-  return <div className="BottomRow">{children}</div>;
-}
-
-
-
-function Author({ name }) {
-  return (
-    <span id="author" className="Author">
-      &mdash; {name}
-    </span>
-  );
-}
 
 function QuoteBox({ onNewQuoteClick }) {
   const [quotedText, setQuotedText] = useState('');
