@@ -4,7 +4,7 @@ Also it changes its theme every time it fetches a new quote, which awesome :D
 
 I built the project for learning purposes.
 
-## Things that I wanted to learn/practice while building the project:
+## Things that I wanted to learn/practice while building the project
 * Building apps with React and React Hooks
 * Creating responsive layouts
 * Using Fetch API
