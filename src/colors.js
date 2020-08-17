@@ -1,6 +1,14 @@
 import tinycolor from 'tinycolor2';
 
-export const colors = [
+function createColorObject(color) {
+  return {
+    main: color,
+    // Darken primary color using TinyColor
+    dark: tinycolor(color).darken(4).toString()
+  };
+}
+
+export default [
   // Sunflower yellow
   { ...createColorObject("#FFC312") }, 
   // Orange
@@ -27,10 +35,4 @@ export const colors = [
   { ...createColorObject("#EA2027") },
 ];
 
-function createColorObject(color) {
-  return {
-    main: color,
-    // Darken primary color using TinyColor
-    dark: tinycolor(color).darken(4).toString()
-  };
-}
+
