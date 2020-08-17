@@ -2,9 +2,12 @@ import tinycolor from 'tinycolor2';
 
 function createColorObject(color) {
   return {
-    main: color,
-    // Darken primary color using TinyColor
-    dark: tinycolor(color).darken(4).toString()
+    main: color, 
+    dark: tinycolor(color)
+      // Increase value passed to darken to darken
+      // hover effects for example 
+      .darken(4)
+      .toString()
   };
 }
 

@@ -1,3 +1,29 @@
+/* === GLOBAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+
+  /* 1rem = 10px */
+  font-size: 62.5%; 
+
+  @media (max-width: 996px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;  
+}
+
+/* === APP === */
 .App {
   --primary: cornflowerblue;
   --primary-dark: rgb(84, 124, 197);
@@ -11,7 +37,9 @@
 
   transition: background-color .5s;
 
+  /* === QUOTE BOX === */
   .QuoteBox {
+    text-align: center;
     color: var(--primary);
     background-color: #fff;
     width: 60vw;
@@ -32,11 +60,13 @@
     }
   }
 
+  /* === TEXT === */
   .Text {
     font-size: 2.5rem;
     margin-bottom: 1vh;
   }
 
+  /* === AUTHOR === */
   .Author {
     font-size: 2rem;
     font-style: italic;
@@ -45,6 +75,7 @@
     margin-bottom: 6vh;
   }
 
+  /* === BOTTOM ROW === */
   .BottomRow {
     display: flex;
     justify-content: space-between;
@@ -56,6 +87,7 @@
     }
   }
 
+  /* === NEW QUOTE BUTTON === */
   .NewQuoteButton {
     font-size: 1.5rem;
     padding: 1rem 2rem;
@@ -66,6 +98,7 @@
     color: #fff;
   }
 
+  /* === LINKS === */
   .Links {
     display: grid;
     grid-auto-flow: column;
@@ -76,6 +109,8 @@
       margin-bottom: 3vh;
     }
   }
+
+  /* === LINK === */
   .Link {
     display: flex;
     align-items: center;
