@@ -1,6 +1,6 @@
 # Random Quote Machine
 An app that fetches a random quote and displays it along with the author.
-Also it changes its theme every time it fetches a new quote, which awesome :D
+Also it changes its theme every time it fetches a new quote, which is awesome :D
 
 I built the project for learning purposes.
 
