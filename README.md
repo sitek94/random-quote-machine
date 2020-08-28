@@ -1,9 +1,9 @@
 # Random Quote Machine
 
+See the project live here: https://sitek94.github.io/random-quote-machine/
+
 An app that fetches a random quote and displays it along with the author.
 Also it changes its theme every time it fetches a new quote, which is awesome :D
-
-Checkout the project here: https://sitek94.github.io/random-quote-machine/
 
 ## Motivation
 I built the project for learning purposes, it's based on the `user stories` by freeCodeCamp, [click here](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-random-quote-machine) to check it out.
@@ -12,4 +12,4 @@ I built the project for learning purposes, it's based on the `user stories` by f
 * Building apps with React and React Hooks
 * Creating responsive layouts
 * Using Fetch API
-* How to create and then change a theme?
+* Creating and changing the theme
